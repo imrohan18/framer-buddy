@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242 76" width="242" height="76">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&amp;display=swap');
+      .domain-script {
+        font-family: 'Caveat', 'Playwrite', 'Brush Script MT', cursive;
+        font-size: 19px;
+        font-weight: 700;
+        font-style: italic;
+        fill: #080808;
+      }
+    </style>
+  </defs>
+  
+  <g fill="#080808">
+    <g transform="translate(4, 6) scale(0.5833333333333334)">
+    <!-- Top shirorekha bar with calligraphic angle -->
+    <path d="M 4,14 L 62,14 C 62,14 60,18.5 56,19.5 L 10,19.5 C 7,19.5 4,17 4,14 Z" />
+    
+    <!-- Short vertical stem -->
+    <path d="M 31,18 L 37,18 L 36,26 L 30,26 Z" />
+    
+    <!-- Upper hook of ह (sweeps right and curls back inward) -->
+    <path d="M 32,24 C 44,24 53,27 52,36 C 51,43 43,45 35,43 C 27,41 23,37 23,36 C 23,36 29,39 36,39 C 43,39 46,36 46,33 C 46,29 38,28 30,28 L 29,24 Z" />
+    
+    <!-- Sweeping grand crescent lower flourish -->
+    <path d="M 35,42 C 22,43 14,48 10,56 C 5,66 9,79 22,85 C 33,90 44,87 49,82 C 50,81 48,80 46,81 C 37,87 23,86 16,78 C 10,70 12,59 23,52 C 30,47 40,49 46,55 C 47,56 48,54 47,53 C 43,47 37,42 35,42 Z" />
+  </g>
+    <g shape-rendering="crispEdges">
+      <rect x="53" y="18" width="6" height="6" />
+      <rect x="77" y="18" width="6" height="6" />
+      <rect x="53" y="24" width="6" height="6" />
+      <rect x="77" y="24" width="6" height="6" />
+      <rect x="53" y="30" width="6" height="6" />
+      <rect x="77" y="30" width="6" height="6" />
+      <rect x="59" y="36" width="6" height="6" />
+      <rect x="65" y="36" width="6" height="6" />
+      <rect x="71" y="36" width="6" height="6" />
+      <rect x="65" y="42" width="6" height="6" />
+      <rect x="65" y="48" width="6" height="6" />
+      <rect x="65" y="54" width="6" height="6" />
+      <rect x="89" y="18" width="6" height="6" />
+      <rect x="95" y="18" width="6" height="6" />
+      <rect x="101" y="18" width="6" height="6" />
+      <rect x="107" y="18" width="6" height="6" />
+      <rect x="89" y="24" width="6" height="6" />
+      <rect x="113" y="24" width="6" height="6" />
+      <rect x="89" y="30" width="6" height="6" />
+      <rect x="113" y="30" width="6" height="6" />
+      <rect x="89" y="36" width="6" height="6" />
+      <rect x="95" y="36" width="6" height="6" />
+      <rect x="101" y="36" width="6" height="6" />
+      <rect x="107" y="36" width="6" height="6" />
+      <rect x="89" y="42" width="6" height="6" />
+      <rect x="101" y="42" width="6" height="6" />
+      <rect x="89" y="48" width="6" height="6" />
+      <rect x="107" y="48" width="6" height="6" />
+      <rect x="89" y="54" width="6" height="6" />
+      <rect x="113" y="54" width="6" height="6" />
+      <rect x="125" y="18" width="6" height="6" />
+      <rect x="149" y="18" width="6" height="6" />
+      <rect x="125" y="24" width="6" height="6" />
+      <rect x="149" y="24" width="6" height="6" />
+      <rect x="125" y="30" width="6" height="6" />
+      <rect x="149" y="30" width="6" height="6" />
+      <rect x="125" y="36" width="6" height="6" />
+      <rect x="149" y="36" width="6" height="6" />
+      <rect x="125" y="42" width="6" height="6" />
+      <rect x="149" y="42" width="6" height="6" />
+      <rect x="125" y="48" width="6" height="6" />
+      <rect x="149" y="48" width="6" height="6" />
+      <rect x="131" y="54" width="6" height="6" />
+      <rect x="137" y="54" width="6" height="6" />
+      <rect x="143" y="54" width="6" height="6" />
+      <rect x="161" y="18" width="6" height="6" />
+      <rect x="185" y="18" width="6" height="6" />
+      <rect x="161" y="24" width="6" height="6" />
+      <rect x="185" y="24" width="6" height="6" />
+      <rect x="167" y="30" width="6" height="6" />
+      <rect x="179" y="30" width="6" height="6" />
+      <rect x="173" y="36" width="6" height="6" />
+      <rect x="167" y="42" width="6" height="6" />
+      <rect x="179" y="42" width="6" height="6" />
+      <rect x="161" y="48" width="6" height="6" />
+      <rect x="185" y="48" width="6" height="6" />
+      <rect x="161" y="54" width="6" height="6" />
+      <rect x="185" y="54" width="6" height="6" />
+    </g>
+    <text x="196" y="62" class="domain-script">.in</text>
+  </g>
+</svg>

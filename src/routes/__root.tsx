@@ -77,13 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Hyrux" },
-      { name: "description", content: "Hyrux — Horizon of Digital Creation" },
+      { title: "Hyrux — Horizon of Digital Creation" },
+      { name: "description", content: "The all-in-one platform to design, launch, sell, and scale digital products. Go from idea to live product in under 48 hours." },
       { name: "author", content: "Hyrux" },
-      { property: "og:title", content: "Hyrux" },
-      { property: "og:description", content: "Horizon of Digital Creation" },
+      { property: "og:title", content: "Hyrux — Horizon of Digital Creation" },
+      { property: "og:description", content: "Build and grow digital products with Hyrux Studio, Vault, Hub, Insights, and Connect." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/hyrux-logo-banner.jpg" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/hyrux-logo-banner.jpg" },
     ],
     links: [
       {
@@ -94,9 +96,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;450;500;550;600;700;800&family=Space+Mono:wght@400;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     ],
   }),
   shellComponent: RootShell,
