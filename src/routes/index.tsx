@@ -17,7 +17,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Route = createFileRoute("/")({
   component: HyruxHome,
@@ -92,19 +92,19 @@ function HyruxLogo({
   badge?: boolean;
 }) {
   const heights = {
-    sm: 24,
-    md: 30,
-    lg: 42,
-  };
-  const markSizes = {
     sm: 28,
     md: 34,
-    lg: 44,
+    lg: 46,
+  };
+  const markSizes = {
+    sm: 32,
+    md: 38,
+    lg: 48,
   };
   const markFonts = {
-    sm: "1rem",
-    md: "1.25rem",
-    lg: "1.7rem",
+    sm: "1.18rem",
+    md: "1.45rem",
+    lg: "1.9rem",
   };
 
   if (badge) {
@@ -344,6 +344,16 @@ const navItems = [
 function HyruxHome() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [pricingAnnual, setPricingAnnual] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div id="top" style={{ minHeight: "100vh", background: "#C4D8E8" }}>
@@ -354,57 +364,50 @@ function HyruxHome() {
         <div className="hero-cloud-left"><CloudSVG width={320} /></div>
         <div className="hero-cloud-right"><CloudSVG width={290} flip /></div>
 
-        {/* Navbar */}
-        <div className="site-nav">
-          <div className="site-container">
-            <div className="nav-pill">
-              <HyruxLogo />
-              <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation">
-                {navItems.map(([label, href]) => (
-                  <a key={href} href={href} className="nav-link">{label}</a>
-                ))}
-              </nav>
-              <div className="flex items-center gap-3">
-                <a href="#connect" className="nav-cta hidden md:inline-flex">
-                  Join the horizon
-                </a>
-                <button
-                  className="md:hidden p-2 rounded-full hover:bg-black/5 transition"
-                  aria-label="Toggle menu"
-                  onClick={() => setMenuOpen(!menuOpen)}
-                >
-                  {menuOpen ? <X size={20} /> : <Menu size={20} />}
-                </button>
-              </div>
+        {/* Floating dynamic morphing navbar */}
+        <header className="navbar-wrapper">
+          <div className={`nav-pill navbar ${isScrolled ? "is-scrolled" : ""}`}>
+            <HyruxLogo size="md" />
+            <nav className="hidden items-center nav-links-list md:flex" aria-label="Main navigation">
+              {navItems.map(([label, href]) => (
+                <a key={href} href={href} className="nav-link">{label}</a>
+              ))}
+            </nav>
+            <div className="flex items-center gap-3">
+              <a href="#connect" className="nav-cta hidden md:inline-flex">
+                Join the horizon
+              </a>
+              <button
+                className="md:hidden p-2.5 rounded-full hover:bg-black/5 transition"
+                aria-label="Toggle menu"
+                onClick={() => setMenuOpen(!menuOpen)}
+              >
+                {menuOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
             </div>
-            {menuOpen && (
-              <nav className="mt-2 rounded-2xl border border-white/60 bg-white/85 backdrop-blur-xl p-5 md:hidden">
+          </div>
+          {menuOpen && (
+            <div className="w-full max-w-[880px] px-4 pointer-events-auto mt-2">
+              <nav className="rounded-2xl border border-white/60 bg-white/92 backdrop-blur-xl p-5 md:hidden shadow-2xl">
                 {navItems.map(([label, href]) => (
-                  <a key={href} href={href} className="block py-2.5 text-sm font-medium text-foreground/70 hover:text-foreground" onClick={() => setMenuOpen(false)}>
+                  <a key={href} href={href} className="block py-2.5 text-base font-medium text-foreground/70 hover:text-foreground" onClick={() => setMenuOpen(false)}>
                     {label}
                   </a>
                 ))}
                 <a href="#connect" className="nav-cta mt-3 w-full justify-center">Join the horizon</a>
               </nav>
-            )}
-          </div>
-        </div>
+            </div>
+          )}
+        </header>
 
         {/* Hero content */}
         <div className="site-container relative z-10">
-          <div className="flex flex-col items-center text-center pt-16 pb-20">
-            {/* Sanskrit mark */}
-            <div className="animate-rise" style={{ marginBottom: 20 }}>
-              <div style={{ display: "inline-grid", placeItems: "center", width: 68, height: 68, borderRadius: 16, background: "#0d0d0d", boxShadow: "0 10px 36px rgba(0,0,0,0.22)" }}>
-                <CalligraphicHa size={36} color="#fff" />
-              </div>
-            </div>
-            <p className="eyebrow animate-rise" style={{ marginBottom: 0 }}>HORIZON OF DIGITAL CREATION</p>
-            <h1 className="hero-title animate-rise-delay">
+          <div className="flex flex-col items-center text-center pt-32 pb-20">
+            <h1 className="hero-title animate-rise">
               Build what's next.<br />
               <span style={{ color: "rgba(13,13,13,0.45)" }}>Own what you create.</span>
             </h1>
-            <p className="hero-copy animate-rise-delay-2">
+            <p className="hero-copy animate-rise-delay">
               The all-in-one operating system to design, launch, sell, and scale
               digital products — without the friction. Go from idea to live product in under 48 hours.
             </p>
@@ -555,7 +558,7 @@ function HyruxHome() {
               <h3 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fff", lineHeight: 1.1, marginBottom: 18 }}>
                 Turn buyers into belonging.
               </h3>
-              <p style={{ fontSize: "1rem", lineHeight: 1.7, color: "rgba(255,255,255,0.6)", marginBottom: 32, maxWidth: 400 }}>
+              <p style={{ fontSize: "1.125rem", lineHeight: 1.68, color: "rgba(255,255,255,0.65)", marginBottom: 32, maxWidth: 440 }}>
                 Create a thriving membership community around your products and turn one-time customers into loyal, recurring subscribers.
               </p>
               <a
@@ -616,7 +619,7 @@ function HyruxHome() {
             <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, letterSpacing: "-0.025em", lineHeight: 1.04, color: "#fff", marginBottom: 20 }}>
               One horizon.<br />Every language.
             </h2>
-            <p style={{ fontSize: "1rem", lineHeight: 1.72, color: "rgba(255,255,255,0.55)", maxWidth: 380 }}>
+            <p style={{ fontSize: "1.125rem", lineHeight: 1.68, color: "rgba(255,255,255,0.6)", maxWidth: 420 }}>
               Hyrux begins with the Sanskrit letter <strong style={{ color: "#fff" }}>ह</strong> — the horizon, the beginning — and carries that spirit across every market worldwide.
             </p>
             <div style={{ marginTop: 28, display: "inline-block" }}>
@@ -660,7 +663,7 @@ function HyruxHome() {
           <h2 className="section-title" style={{ textAlign: "center", margin: "10px auto 8px" }}>
             Built for serious builders
           </h2>
-          <p style={{ textAlign: "center", fontSize: "0.875rem", color: "rgba(13,13,13,0.45)", marginBottom: 36 }}>
+          <p style={{ textAlign: "center", fontSize: "1.125rem", lineHeight: 1.6, color: "rgba(13,13,13,0.55)", marginBottom: 36 }}>
             Start free. Scale when you're ready. No surprise fees.
           </p>
 
@@ -757,14 +760,14 @@ function HyruxHome() {
           <CloudSVG width={300} flip />
         </div>
         <div className="site-container" style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
-          <div style={{ display: "inline-grid", placeItems: "center", width: 60, height: 60, borderRadius: 13, background: "#0d0d0d", color: "#fff", fontFamily: "'Noto Sans Devanagari', 'Inter', sans-serif", fontSize: "2rem", fontWeight: 600, marginBottom: 32, boxShadow: "0 8px 28px rgba(0,0,0,0.18)" }}>
-            ह
+          <div style={{ display: "inline-grid", placeItems: "center", width: 64, height: 64, borderRadius: 14, background: "#0d0d0d", marginBottom: 32, boxShadow: "0 8px 28px rgba(0,0,0,0.18)" }}>
+            <CalligraphicHa size={32} color="#fff" />
           </div>
           <p className="eyebrow" style={{ marginBottom: 16 }}>THE HORIZON IS OPEN</p>
           <h2 style={{ fontSize: "clamp(2.4rem, 6vw, 5rem)", fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1.03, marginBottom: 22 }}>
             Build the digital business<br />only you can imagine.
           </h2>
-          <p style={{ fontSize: "1rem", color: "rgba(13,13,13,0.6)", marginBottom: 36, maxWidth: 500, marginInline: "auto" }}>
+          <p style={{ fontSize: "1.125rem", lineHeight: 1.68, color: "rgba(13,13,13,0.65)", marginBottom: 36, maxWidth: 560, marginInline: "auto" }}>
             Hyrux is coming to creators, entrepreneurs, and teams building what comes next. Join the early access list.
           </p>
           <a
