@@ -186,10 +186,10 @@
 
 @utility nav-link {
   font-size: 1rem;
-  font-weight: 500;
-  color: rgba(13,13,13,0.68);
-  transition: color 180ms ease;
-  &:hover { color: #0d0d0d; }
+  font-weight: 550;
+  color: #0d0d0d;
+  transition: opacity 180ms ease;
+  &:hover { opacity: 0.68; }
 }
 
 @utility nav-cta {
@@ -236,13 +236,13 @@
 }
 
 @utility hero-title {
-  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-size: clamp(2.4rem, 5vw, 4.75rem);
   font-weight: 700;
-  line-height: 0.95;
+  line-height: 1.02;
   letter-spacing: -0.03em;
   color: #0d0d0d;
-  max-width: 900px;
-  margin-top: 20px;
+  max-width: 780px;
+  margin-top: 14px;
 }
 
 @utility hero-copy {

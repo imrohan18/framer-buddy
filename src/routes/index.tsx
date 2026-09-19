@@ -390,7 +390,7 @@ function HyruxHome() {
             <div className="w-full max-w-[880px] px-4 pointer-events-auto mt-2">
               <nav className="rounded-2xl border border-white/60 bg-white/92 backdrop-blur-xl p-5 md:hidden shadow-2xl">
                 {navItems.map(([label, href]) => (
-                  <a key={href} href={href} className="block py-2.5 text-base font-medium text-foreground/70 hover:text-foreground" onClick={() => setMenuOpen(false)}>
+                  <a key={href} href={href} className="block py-2.5 text-base font-medium text-foreground hover:opacity-70 transition" onClick={() => setMenuOpen(false)}>
                     {label}
                   </a>
                 ))}
