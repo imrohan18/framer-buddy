@@ -214,7 +214,7 @@
   min-height: 100dvh;
   background: linear-gradient(175deg, #B0CBE0 0%, #C4D8E8 40%, #D8EAF4 68%, #EFF5F9 100%);
   position: relative;
-  overflow: hidden;
+  overflow: clip; /* clip keeps clouds cropped but doesn't trap fixed/sticky backdrop-filter */
 }
 
 @utility hero-cloud-left {
@@ -372,12 +372,14 @@
 @utility value-cell { min-height: 265px; padding: 36px; background: #fff; border-right: 1px solid rgba(0,0,0,0.08); & svg { width: 24px; } & h3 { margin-top: 50px; font-size: 1.2rem; font-weight: 700; } & p { margin-top: 10px; font-size: 0.875rem; line-height: 1.6; color: rgba(13,13,13,0.55); } }
 @utility cta-band { padding-block: 120px; background: var(--surface); position: relative; overflow: hidden; text-align: center; }
 
-@utility animate-rise { animation: rise 0.7s ease both; }
-@utility animate-rise-delay { animation: rise 0.75s 0.1s ease both; }
-@utility animate-rise-delay-2 { animation: rise 0.78s 0.22s ease both; }
-@utility animate-dashboard { animation: rise 0.9s 0.36s ease both; }
+@utility animate-navbar      { opacity: 0; transform: translateY(-18px); animation: navDown 0.65s 0.05s cubic-bezier(0.16,1,0.3,1) forwards; }
+@utility animate-rise        { opacity: 0; transform: translateY(22px);  animation: rise    0.65s 0.20s cubic-bezier(0.16,1,0.3,1) forwards; }
+@utility animate-rise-delay  { opacity: 0; transform: translateY(22px);  animation: rise    0.65s 0.32s cubic-bezier(0.16,1,0.3,1) forwards; }
+@utility animate-rise-delay-2 { opacity: 0; transform: translateY(22px); animation: rise    0.65s 0.44s cubic-bezier(0.16,1,0.3,1) forwards; }
+@utility animate-dashboard   { opacity: 0; transform: translateY(28px);  animation: rise    0.70s 0.56s cubic-bezier(0.16,1,0.3,1) forwards; }
 
-@keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes navDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes rise    { from { opacity: 0; transform: translateY(22px);  } to { opacity: 1; transform: translateY(0); } }
 @keyframes marquee { to { transform: translateX(-50%); } }
 @keyframes floatCloud { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
 

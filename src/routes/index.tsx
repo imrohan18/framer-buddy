@@ -364,8 +364,8 @@ function HyruxHome() {
         <div className="hero-cloud-left"><CloudSVG width={320} /></div>
         <div className="hero-cloud-right"><CloudSVG width={290} flip /></div>
 
-        {/* Floating dynamic morphing navbar */}
-        <header className="navbar-wrapper">
+        {/* Floating dynamic morphing navbar (root-level fixed context for global backdrop blur) */}
+      <header className="navbar-wrapper animate-navbar">
           <div className={`nav-pill navbar ${isScrolled ? "is-scrolled" : ""}`}>
             <HyruxLogo size="md" />
             <nav className="hidden items-center nav-links-list md:flex" aria-label="Main navigation">
@@ -403,15 +403,15 @@ function HyruxHome() {
         {/* Hero content */}
         <div className="site-container relative z-10">
           <div className="flex flex-col items-center text-center pt-32 pb-20">
-            <h1 className="hero-title animate-rise">
+            <h1 className="hero-title animate-rise" style={{ animationDelay: "0.20s" }}>
               Build what's next.<br />
               <span style={{ color: "rgba(13,13,13,0.45)" }}>Own what you create.</span>
             </h1>
-            <p className="hero-copy animate-rise-delay">
+            <p className="hero-copy animate-rise-delay" style={{ animationDelay: "0.32s" }}>
               The all-in-one operating system to design, launch, sell, and scale
               digital products — without the friction. Go from idea to live product in under 48 hours.
             </p>
-            <div className="flex items-center gap-3 mt-9 flex-wrap justify-center animate-rise-delay-2">
+            <div className="flex items-center gap-3 mt-9 flex-wrap justify-center animate-rise-delay-2" style={{ animationDelay: "0.44s" }}>
               <a
                 href="#connect"
                 style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "13px 28px", borderRadius: 999, background: "#0d0d0d", color: "#fff", fontSize: "0.95rem", fontWeight: 650 }}
@@ -427,7 +427,7 @@ function HyruxHome() {
             </div>
 
             {/* Dashboard */}
-            <div className="w-full flex justify-center" style={{ marginTop: 60 }}>
+            <div className="w-full flex justify-center animate-dashboard" style={{ marginTop: 60 }}>
               <HyruxDashboard />
             </div>
           </div>
