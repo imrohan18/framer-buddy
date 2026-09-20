@@ -153,12 +153,12 @@
   gap: 28px;
   /* Keep pill size identical on scroll */
   padding: 12px 24px;
-  /* Harmonize seamlessly with page background tone */
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border-color: rgba(255, 255, 255, 0.38);
-  box-shadow: 0 10px 32px -10px rgba(15, 35, 60, 0.08);
+  /* Frosted glassmorphism with visible lens blur matching reference */
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px) saturate(190%);
+  -webkit-backdrop-filter: blur(12px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
 }
 
 @media (max-width: 768px) {

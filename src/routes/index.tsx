@@ -521,7 +521,7 @@ function HyruxHome() {
                         <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", display: "inline-block" }} />
                       </div>
                       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6, marginBottom: 6 }}>
-                        {[1,2,3].map(i => <div key={i} style={{ height: 22, borderRadius: 4, background: "rgba(0,0,0,0.06)" }} />)}
+                        {[1, 2, 3].map(i => <div key={i} style={{ height: 22, borderRadius: 4, background: "rgba(0,0,0,0.06)" }} />)}
                       </div>
                       <div style={{ height: 36, borderRadius: 4, background: "rgba(0,0,0,0.04)" }} />
                     </div>
