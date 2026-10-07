@@ -1,10 +1,52 @@
 import { randomUUID } from "node:crypto";
-import { mkdirSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 
-const dbPath = join(process.cwd(), "..", "data", "cyrux.sqlite");
-mkdirSync(dirname(dbPath), { recursive: true });
+function getDatabasePath(): string {
+  // In serverless runtimes (like Vercel Lambda), the root filesystem is read-only.
+  // /tmp is the only writable directory.
+  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+    const tmpDbPath = join("/tmp", "cyrux.sqlite");
+    if (!existsSync(tmpDbPath)) {
+      const candidates = [
+        join(process.cwd(), "data", "cyrux.sqlite"),
+        join(process.cwd(), "..", "data", "cyrux.sqlite"),
+      ];
+      let copied = false;
+      for (const candidate of candidates) {
+        if (existsSync(candidate)) {
+          try {
+            copyFileSync(candidate, tmpDbPath);
+            copied = true;
+            break;
+          } catch (e) {
+            console.error("Failed to copy seed sqlite db from", candidate, e);
+          }
+        }
+      }
+      if (!copied) {
+        try {
+          mkdirSync(dirname(tmpDbPath), { recursive: true });
+        } catch {
+          // ignore if /tmp already exists
+        }
+      }
+    }
+    return tmpDbPath;
+  }
+
+  // Local development: prioritize frontend/data, then ../data
+  const frontendData = join(process.cwd(), "data", "cyrux.sqlite");
+  if (existsSync(frontendData)) {
+    return frontendData;
+  }
+  const rootData = join(process.cwd(), "..", "data", "cyrux.sqlite");
+  mkdirSync(dirname(rootData), { recursive: true });
+  return rootData;
+}
+
+const dbPath = getDatabasePath();
 
 const database = new DatabaseSync(dbPath, {
   enableForeignKeyConstraints: true,
