@@ -40,7 +40,7 @@ function mapProjectRow(row: ProjectRow): CmsProject {
     id: row.id,
     title: row.title,
     slug: row.slug,
-    category: row.category,
+    category: row.category as CmsProject["category"],
     shortDescription: row.short_description,
     description: row.description,
     mainImage: row.main_image,

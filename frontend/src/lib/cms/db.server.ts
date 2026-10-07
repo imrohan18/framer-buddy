@@ -6,7 +6,7 @@ import { DatabaseSync } from "node:sqlite";
 function getDatabasePath(): string {
   // In serverless runtimes (like Vercel Lambda), the root filesystem is read-only.
   // /tmp is the only writable directory.
-  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+  if (process.env["VERCEL"] || process.env["AWS_LAMBDA_FUNCTION_NAME"]) {
     const tmpDbPath = join("/tmp", "cyrux.sqlite");
     if (!existsSync(tmpDbPath)) {
       const candidates = [
