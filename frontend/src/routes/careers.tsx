@@ -15,25 +15,13 @@ function CareersPage() {
       title="Join the team shaping the next creator operating system."
       description="We are building the product platform we always wanted as creators. If you care about design quality, velocity, and ownership, we should talk."
     >
-      <div style={{ display: "grid", gap: 12 }}>
+      <div className="careers-list">
         {roles.map((role) => (
-          <article
-            key={role}
-            style={{
-              border: "1px solid rgba(0,0,0,0.08)",
-              borderRadius: 14,
-              background: "#fff",
-              padding: "16px 18px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: 12,
-            }}
-          >
-            <span style={{ fontWeight: 600 }}>{role}</span>
+          <article key={role} className="careers-role">
+            <span className="careers-role-title">{role}</span>
             <Link
               to="/contact"
-              style={{ textDecoration: "none", color: "#0d0d0d", fontWeight: 600 }}
+              className="careers-apply"
             >
               Apply
             </Link>

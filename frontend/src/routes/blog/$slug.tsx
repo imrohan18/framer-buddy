@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Share2, Linkedin, Twitter } from "lucide-react";
 import { getPublishedBlogPostBySlugFn } from "../../lib/cms/server-fns";
 import type { BlogPost } from "../../lib/cms/types";
 import { formatDate } from "../../lib/utils";
+import { MarketingShell } from "../../components/marketing-shell";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ params }) => {
@@ -38,7 +39,7 @@ function BlogDetailPage() {
   const shareUrl = typeof window !== "undefined" ? `https://hyrux.in/blog/${post.slug}` : "";
 
   return (
-    <>
+    <MarketingShell eyebrow={post.category} title={post.title} description={post.excerpt}>
       <article className="blog-detail">
         <header className="blog-detail-header">
           <div className="blog-detail-meta">
@@ -113,6 +114,6 @@ function BlogDetailPage() {
           </div>
         </section>
       </article>
-    </>
+    </MarketingShell>
   );
 }

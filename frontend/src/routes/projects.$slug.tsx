@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
+import { MarketingShell } from "../components/marketing-shell";
 import { getProjectBySlugFn } from "../lib/cms/server-fns";
 
 export const Route = createFileRoute("/projects/$slug")({
@@ -36,21 +37,11 @@ function ProjectDetailPage() {
   const { project } = Route.useLoaderData();
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F8F4EF" }}>
-      <section style={{ background: "linear-gradient(180deg,#D8EAF4 0%, #F8F4EF 74%)" }}>
-        <div className="site-container" style={{ padding: "106px 0 40px" }}>
-          <p className="eyebrow">
-            {project.category} {project.year ? `· ${project.year}` : ""}
-          </p>
-          <h1 className="section-title" style={{ marginTop: 10 }}>
-            {project.title}
-          </h1>
-          <p className="section-copy" style={{ maxWidth: 760 }}>
-            {project.shortDescription}
-          </p>
-        </div>
-      </section>
-
+    <MarketingShell
+      eyebrow={`${project.category}${project.year ? ` · ${project.year}` : ""}`}
+      title={project.title}
+      description={project.shortDescription}
+    >
       <section style={{ padding: "0 0 52px", background: "#F8F4EF" }}>
         <div className="site-container">
           {project.mainImage ? (
@@ -127,6 +118,6 @@ function ProjectDetailPage() {
           </Link>
         </div>
       </section>
-    </div>
+    </MarketingShell>
   );
 }
